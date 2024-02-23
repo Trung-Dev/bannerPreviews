@@ -1,0 +1,345 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+  <title>Templates</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="static/material-design.css">
+  <link rel="stylesheet" href="static/style.css">
+
+  <script type="text/javascript">
+    window.onload = function() {
+      const adsBlocked = document.getElementById('ads-blocked');
+      const btDisabled = document.getElementById('bt-disabled');
+
+      btDisabled.addEventListener('click', () => {
+        adsBlocked.classList.add('hidden');
+      }, false);
+
+      let simulateBannerAd = document.createElement('div');
+      simulateBannerAd.className = 'textads banner-ads banner_ads ad-unit ad-zone ad-space adsbox';
+      simulateBannerAd.style.height = '1px';
+
+      document.body.appendChild(simulateBannerAd);
+
+      let width = simulateBannerAd.offsetHeight;
+
+      if (!width) adsBlocked.classList.remove('hidden');
+    };
+  </script>
+<body>
+
+<!-- Alert Adblock -->
+<div class='adblock-wrapper center hidden' id='ads-blocked'>
+  <div class='adblock-content-wrapper'>
+    <div class='adblock-content'>
+      <div class='center'>
+        <div class='image-container'>
+          <div class='image'>
+            <i class="fas fa-exclamation-circle"></i>
+            <h3>
+              Ads
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class='adblock-text'>
+        <h3>
+          Please disable your Ad Blocker!
+        </h3>
+        <p>
+          We know ads are annoying but please bear with us here & disable your ad blocker!
+        </p>
+      </div>
+      <div class='adblock-button'>
+        <button class='btn' id="bt-disabled">
+          I've disabled my Ad Blocker!
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Alert Adblock -->
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+
+
+      <!--      <a class="reload_btn" href="reload/"></a>-->
+
+
+      <!-- Title -->
+      <span class="mdl-layout-title">
+        Preview
+      </span>
+
+      <!-- Layout Toggle -->
+      <!-- TODO replace with SVG -->
+      <div class="layout-toggle" onclick="toggleClickHandler()">
+        <button class="layout-toggle-button left material-icons">
+          list
+        </button>
+        <button class="layout-toggle-button right material-icons active ">
+          grid_view
+        </button>
+      </div>
+
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+
+      <!-- FAB button with ripple -->
+      <button class="add-filter-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect"
+              onclick="addFilterClickHandler()">
+        <i class="material-icons">add</i>
+      </button>
+
+      <!-- Filter for banner size -->
+      <div class="filter-container regular">
+        <div class="filter-wrapper">
+          <label for="banner-size-dropdown">Banner size:</label>
+          <select name="banner-size-dropdown" class="filter banner-size-dropdown" data-card-attribute="data-banner-size"
+                  onchange="filterChangeHandler()">
+            <option value="All">All</option>
+              <option value="300x250">300x250</option>
+          </select>
+        </div>
+      </div>
+
+      <label class="modusLabel">Light Mode / Dark Mode:</label>
+      <label class="switch">
+        <input type="checkbox" id="checkboxDark" onclick="darkMode()">
+        <span class="slider round"></span>
+      </label>
+
+      <!-- Navigation. We hide it in small screens. -->
+      <!--<nav class="mdl-navigation mdl-layout&#45;&#45;large-screen-only">-->
+      <!--<a class="mdl-navigation__link" href="">Link</a>-->
+      <!--<a class="mdl-navigation__link" href="">Link</a>-->
+      <!--<a class="mdl-navigation__link" href="">Link</a>-->
+      <!--<a class="mdl-navigation__link" href="">Link</a>-->
+
+      <!--</nav>-->
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Title</span>
+    <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="./chicken_300x250/index.html" target="_blank">chicken_300x250</a>
+        <a class="mdl-navigation__link" href="./three_300x250/index.html" target="_blank">three_300x250</a>
+        <a class="mdl-navigation__link" href="./despo_300x250/index.html" target="_blank">despo_300x250</a>
+        <a class="mdl-navigation__link" href="./liptop_300x250/index.html" target="_blank">liptop_300x250</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content ">
+        <div class="card mdl-card mdl-shadow--2dp" style="width: 300px;" data-banner-size="300x250">
+
+          <div class="mdl-card__media" style="width: 300px; height: 250px;">
+            <div class="loader"></div>
+            <iframe class="visible" src="./chicken_300x250/index.html" width="300" height="250"
+                    frameborder="0"></iframe>
+          </div>
+
+          <div class="mdl-card__actions mdl-card--border">
+              <div class="gsDevContainer">
+              </div>
+            <div class="iconsContainer">
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-visibility"
+                 style="display: none">
+                <i class="material-icons">visibility</i>
+              </a>
+
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-visibility">
+                <i class="material-icons">info</i>
+              </a>
+
+<!--              -->
+
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-refresh">
+                <i class="material-icons">refresh</i>
+              </a>
+            </div>
+
+            <a class="mdl-button mdl-js-button mdl-js-ripple.mdl-card__media-effect action-new-page">
+              <span class="banner-name">
+                chicken_300x250
+              </span>
+              <i class="material-icons">open_in_new</i>
+            </a>
+            <!-- <div class="banner-info">
+              <span class="bold">File Size:</span><span> 120 Kb</span>
+            </div> -->
+            <div class="banner-info">
+              <span class="bold">Display Size:</span><span> 300x250px</span>
+            </div>
+            <!-- <div class="banner-info">
+              <span class="bold">Date Modified:</span><span> 03/11/2020</span>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="card mdl-card mdl-shadow--2dp" style="width: 300px;" data-banner-size="300x250">
+
+          <div class="mdl-card__media" style="width: 300px; height: 250px;">
+            <div class="loader"></div>
+            <iframe class="visible" src="./three_300x250/index.html" width="300" height="250"
+                    frameborder="0"></iframe>
+          </div>
+
+          <div class="mdl-card__actions mdl-card--border">
+              <div class="gsDevContainer">
+              </div>
+            <div class="iconsContainer">
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-visibility"
+                 style="display: none">
+                <i class="material-icons">visibility</i>
+              </a>
+
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-visibility">
+                <i class="material-icons">info</i>
+              </a>
+
+<!--              -->
+
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-refresh">
+                <i class="material-icons">refresh</i>
+              </a>
+            </div>
+
+            <a class="mdl-button mdl-js-button mdl-js-ripple.mdl-card__media-effect action-new-page">
+              <span class="banner-name">
+                stepPay_300x250
+              </span>
+              <i class="material-icons">open_in_new</i>
+            </a>
+            <!-- <div class="banner-info">
+              <span class="bold">File Size:</span><span> 120 Kb</span>
+            </div> -->
+            <div class="banner-info">
+              <span class="bold">Display Size:</span><span> 300x250px</span>
+            </div>
+            <!-- <div class="banner-info">
+              <span class="bold">Date Modified:</span><span> 03/11/2020</span>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="card mdl-card mdl-shadow--2dp" style="width: 300px;" data-banner-size="300x600">
+
+          <div class="mdl-card__media" style="width: 300px; height: 250px;">
+            <div class="loader"></div>
+            <iframe class="visible" src="./despo_300x250/index.html" width="300" height="250"
+                    frameborder="0"></iframe>
+          </div>
+
+          <div class="mdl-card__actions mdl-card--border">
+              <div class="gsDevContainer">
+              </div>
+            <div class="iconsContainer">
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-visibility"
+                 style="display: none">
+                <i class="material-icons">visibility</i>
+              </a>
+
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-visibility">
+                <i class="material-icons">info</i>
+              </a>
+
+<!--              -->
+
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-refresh">
+                <i class="material-icons">refresh</i>
+              </a>
+            </div>
+
+            <a class="mdl-button mdl-js-button mdl-js-ripple.mdl-card__media-effect action-new-page">
+              <span class="banner-name">
+                desperado_300x250
+              </span>
+              <i class="material-icons">open_in_new</i>
+            </a>
+            <!-- <div class="banner-info">
+              <span class="bold">File Size:</span><span> 120 Kb</span>
+            </div> -->
+            <div class="banner-info">
+              <span class="bold">Display Size:</span><span> 300x250px</span>
+            </div>
+            <!-- <div class="banner-info">
+              <span class="bold">Date Modified:</span><span> 03/11/2020</span>
+            </div> -->
+          </div>
+        </div>
+        <div class="card mdl-card mdl-shadow--2dp" style="width: 300px;" data-banner-size="300x250">
+
+          <div class="mdl-card__media" style="width: 300px; height: 250px;">
+            <div class="loader"></div>
+            <iframe class="visible" src="./liptop_300x250/index.html" width="300" height="250"
+                    frameborder="0"></iframe>
+          </div>
+
+          <div class="mdl-card__actions mdl-card--border">
+              <div class="gsDevContainer">
+              </div>
+            <div class="iconsContainer">
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-visibility"
+                 style="display: none">
+                <i class="material-icons">visibility</i>
+              </a>
+
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-visibility">
+                <i class="material-icons">info</i>
+              </a>
+
+<!--              -->
+
+
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-refresh">
+                <i class="material-icons">refresh</i>
+              </a>
+            </div>
+
+            <a class="mdl-button mdl-js-button mdl-js-ripple.mdl-card__media-effect action-new-page">
+              <span class="banner-name">
+                liptop_300x250
+              </span>
+              <i class="material-icons">open_in_new</i>
+            </a>
+            <!-- <div class="banner-info">
+              <span class="bold">File Size:</span><span> 120 Kb</span>
+            </div> -->
+            <div class="banner-info">
+              <span class="bold">Display Size:</span><span> 320x250px</span>
+            </div>
+            <!-- <div class="banner-info">
+              <span class="bold">Date Modified:</span><span> 03/11/2020</span>
+            </div> -->
+          </div>
+        </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="static/material-design.js"></script>
+<script src="static/main.js"></script>
+
+<script>
+    // Check if the IOS is in dark mode
+    let darkmodeCheck = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    darkModeStorage = localStorage.getItem("dark-mode");
+    if(darkmodeCheck && darkModeStorage ==='enabled'){
+      document.getElementById("checkboxDark").checked = true;
+      darkMode()
+    } else {
+      console.log('Currently not in dark mode');
+    };
+
+</script>
+</body>
+</html>
